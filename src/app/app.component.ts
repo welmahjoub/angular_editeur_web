@@ -8,11 +8,19 @@ import {ApiServiceService} from './api-service.service';
 })
 export class AppComponent  implements OnInit {
   title = 'sirFront';
+  afficheForm = false;
   constructor(private api: ApiServiceService) {
   }
   ngOnInit(): void {
     this.api.getListeUsers().subscribe(res => {
       this.title = res;
+      console.log(res);
     });
   }
+  afficherFormulaire() {
+    this.afficheForm = true;
+    console.log('hi');
+  }
+
+
 }
