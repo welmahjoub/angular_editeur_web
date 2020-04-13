@@ -27,7 +27,7 @@ export class AddSondageComponent implements OnInit {
   }
 
   onSubmit(data) {
-    const  u = new User(data.nom, data.prenom, data.mail);
+    const  u = new User(data.nom, data.prenom, data.mail, data.password);
     const  user: Observable<User> = this.api.addUser(u);
     user.subscribe(res => {
       console.log(res);
