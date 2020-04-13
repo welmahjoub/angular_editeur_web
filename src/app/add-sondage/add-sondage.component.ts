@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
-import {ApiServiceService} from '../api-service.service';
+import {ApiServiceService} from '../services/api-service.service';
 import {Observable} from 'rxjs';
-import {User} from '../model/User';
+import {User} from '../models/User';
 
 @Component({
   selector: 'app-add-sondage',
