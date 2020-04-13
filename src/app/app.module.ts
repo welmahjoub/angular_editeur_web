@@ -16,7 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import {RouterModule, Routes} from '@angular/router';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import {AuthService} from "./services/auth.service";
+import {AuthService} from './services/auth.service';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
