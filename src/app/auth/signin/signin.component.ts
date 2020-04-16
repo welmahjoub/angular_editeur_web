@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import {IUser} from "../../interfaces/IUser";
-import {Subscription} from "rxjs";
+import {IUser} from '../../interfaces/IUser';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-signin',
@@ -35,35 +35,21 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     const email = this.signInForm.get('email').value;
     const password = this.signInForm.get('password').value;
-    this.authService.isExistUser(email, password).then(
+
+    console.log(email);
+
+    this.authService.signIn(email, password).then(
           response => {
             if (response) {
-            this.user = response ;
-            console.log(this.user);
-            this.authService.emitAuth();
-            this.router.navigate(['/sondages']);
-          }
+              console.log(email + '' + password);
+              this.user = response ;
+              this.router.navigate(['/sondages']);
+          } else {
+              console.log('no existe');
+            }
          }
     );
-    /*this.authService.authSubject.subscribe(
-      (auth) => {
-        this.isAuth = auth;
-      }
-    );*/
-    /*this.authService.isExistUser(email, password)*/
 
-    /*this.authService.signInUser(email, password).then(
-      () => {
-        this.router.navigate(['/books']);
-      },
-
-      (error) => {
-        this.errorMessage = error;
-      }
-
-    )*/
-    this.authService.emitUser();
-    this.authService.emitAuth();
   }
 
 }

@@ -17,6 +17,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import {AuthService} from './services/auth.service';
+import {SondageService} from './services/sondage.service';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
@@ -50,7 +51,8 @@ const  appRoutes: Routes = [
   ],
   providers: [
     ApiServiceService,
-    AuthService
+    AuthService,
+    SondageService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
-import {User} from "../../models/User";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
+import {User} from '../../models/User';
 
 @Component({
   selector: 'app-signup',
@@ -32,14 +32,19 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
+
     const firstname = this.signOutForm.get('firstName').value;
     const lastname = this.signOutForm.get('lastName').value;
     const email = this.signOutForm.get('email').value;
     const password = this.signOutForm.get('password').value;
-    this.authService.isExistUser(email, password).then(
+
+
+    this.authService.signIn(email, password).then(
       response => {
+        console.log(response);
         if (response) {
           this.errorMessage = 'This user is already existing !';
+          console.log(this.errorMessage);
         } else {
           const user = new User(firstname, lastname, email, password);
           this.authService.addUser(user).subscribe(
@@ -47,13 +52,13 @@ export class SignupComponent implements OnInit {
               console.log(useradd);
             }
           );
+          this.authService.signIn(email, password);
           this.router.navigate(['/sondages']);
         }
       }
     );
 
-    this.authService.emitUser();
-    this.authService.emitAuth();
+
   }
 
 }

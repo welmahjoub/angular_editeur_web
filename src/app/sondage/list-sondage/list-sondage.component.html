@@ -1,1 +1,23 @@
-<p>list-sondage works!</p>
+<div class="row">
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Intitulé</th>
+        <th scope="col">Date de creation</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let sondage of sondages">
+        <th scope="row">sondage.id</th>
+        <td>"sondage.reunion.intitule"</td>
+        <td>"sondage.dateCreation"</td>
+        <td>#####</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

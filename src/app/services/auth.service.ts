@@ -3,6 +3,7 @@ import {Observable, Subject} from 'rxjs';
 import {User} from '../models/User';
 import {HttpClient} from '@angular/common/http';
 import {IUser} from '../interfaces/IUser';
+import {ISondage} from '../interfaces/ISondage';
 
 
 
@@ -36,8 +37,6 @@ export class AuthService {
   }
 
 
-  signInUser(email: string, password: string) {
-  }
 
   signOutUser() {
   }
@@ -46,23 +45,7 @@ export class AuthService {
     return this.httpService.get<IUser>('/rest/users/');
   }
 
-  isExistUser1(email: string, password: string) {
-    this.getListeUsers().subscribe(
-
-      (res: IUser[]) => { res.forEach(
-        (user) => { if ( user.mail === email && user.password === password) {
-          this.user = user;
-        } }
-      );
-      },
-      (eror) => {
-        return false;
-      }
-
-    );
-  }
-
-  isExistUser(email: string, password: string) {
+  signIn(email: string, password: string) {
     return new Promise(
       (resolve , reject) => {
         this.getListeUsers().subscribe(
@@ -72,11 +55,14 @@ export class AuthService {
                 console.log(user);
                 this.user = user;
                 this.isAuth = true;
+                this.emitAuth();
+                this.emitUser();
                 resolve(user);
               }// end if
 
             }
           ); // end foreach
+                                 resolve(false);
           }
         );
       }
@@ -88,4 +74,6 @@ export class AuthService {
   addUser(u: User): Observable<User> {
     return this.httpService.post<User>('/rest/users/add', u );
   }
+
+
 }
