@@ -11,4 +11,5 @@ export  class Sondage {
     this.idUser = idUser;
     this.dates = dates;
   }
+
 }

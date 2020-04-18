@@ -25,7 +25,7 @@ const  appRoutes: Routes = [
   {path: 'users', component : ListUserComponent },
   {path: 'new-user', component: NewUserComponent},
   {path: 'sondages', component : ListSondageComponent },
-  {path: 'new-user', component: NewSondageComponent}
+  {path: 'new-sondage', component: NewSondageComponent}
   ];
 
 @NgModule({

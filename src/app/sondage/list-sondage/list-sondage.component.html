@@ -1,5 +1,10 @@
 <div class="row">
+  <a class="btn btn-success" routerLink="/new-sondage">Ajouter un nouveau sondage</a>
+  <!--<a class="btn btn-success" [routerLink]="/new-sondage/">Ajouter un nouveau sondage</a>-->
+  <br>
   <div class="col-md-8">
+
+
     <table class="table table-striped">
       <thead>
       <tr>
@@ -11,9 +16,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let sondage of sondages">
-        <th scope="row">sondage.id</th>
-        <td>"sondage.reunion.intitule"</td>
-        <td>"sondage.dateCreation"</td>
+        <th scope="row">{{sondage.id}}</th>
+        <td>{{sondage.reunion.intitule}}</td>
+        <td>{{sondage.dateCreation}}</td>
         <td>#####</td>
       </tr>
 

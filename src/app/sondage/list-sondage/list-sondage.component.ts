@@ -32,6 +32,7 @@ export class ListSondageComponent implements OnInit {
             console.log(sondages);
           }
         );
+    this.user = this.sondageService.getUser();
   }
 
 }
