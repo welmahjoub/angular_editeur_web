@@ -1,33 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Sondage} from '../../models/Sondage';
-import {SondageService} from '../../services/sondage.service';
+import {SondageService} from "../../services/sondage.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Sondage} from "../../models/Sondage";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
-  selector: 'app-new-sondage',
-  templateUrl: './new-sondage.component.html',
-  styleUrls: ['./new-sondage.component.css']
+  selector: 'app-edit-sondage',
+  templateUrl: './edit-sondage.component.html',
+  styleUrls: ['./edit-sondage.component.css']
 })
-export class NewSondageComponent implements OnInit {
-
+export class EditSondageComponent implements OnInit {
+  id: string;
+  sondage: any;
   sondageForm: FormGroup;
   errorMessage: string;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
+              private sondageService: SondageService,
               private router: Router,
-              private  sondageService: SondageService ) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params.idSond;
+    this.sondageService.getSondage(this.id).subscribe(
+      (sondage) => {
+        this.sondage = sondage;
+        console.log(this.sondage);
+      }
+    );
+
     this.initForm();
-    // Permet recuperer le parametre id passé dans l'url
-    /*const user = this.route.snapshot.params.idUser;
-    console.log(user);*/
-
   }
-
 
   initForm() {
     this.sondageForm = this.formBuilder.group({
@@ -60,6 +65,5 @@ export class NewSondageComponent implements OnInit {
   onBack() {
     this.router.navigate(['/sondages']);
   }
-
 
 }

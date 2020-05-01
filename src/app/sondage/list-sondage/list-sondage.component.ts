@@ -35,4 +35,19 @@ export class ListSondageComponent implements OnInit {
     this.user = this.sondageService.getUser();
   }
 
+  onViewSondage(id) {
+  this.router.navigate(['/detail-sondage', id]);
+  }
+
+  onDeleteSondage(id) {
+    this.router.navigate(['/detail-sondage', id]);
+  }
+
+  onUpdateSondage(sondId) {
+    // this.router.navigate(['/edit-sondage', sondage]);
+    // this.router.navigate(['/edit-sondage', {sondage: sond}]);
+    this.router.navigate(['/edit-sondage', sondId]);
+  }
+
+
 }

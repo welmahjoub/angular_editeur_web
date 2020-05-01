@@ -1,0 +1,34 @@
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"> Titre : <span *ngIf="sondage">{{sondage.reunion.intitule}}</span> </h3>
+      </div>
+      <div class="panel-body" *ngIf="sondage">
+        <p>id Reunion : {{sondage.reunion.id}}</p>
+        <p>Code Reunion : {{sondage.reunion.code}}</p>
+        <p>Resumé de la Reunion : {{sondage.reunion.resume}}</p>
+        <p>users : {{sondage.user}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Les dates proposées</h3>
+      </div>
+      <div class="panel-body">
+        <ul *ngIf="sondage">
+          <li *ngFor=" let proposition  of sondage.dateProposees">
+            {{proposition.date}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<button (click)="onBack()" class="btn btn-primary">Liste des sondages</button>
+
+

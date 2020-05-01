@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {ApiServiceService} from './services/api-service.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AddSondageComponent } from './add-sondage/add-sondage.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ListSondageComponent } from './sondage/list-sondage/list-sondage.component';
 import { NewSondageComponent } from './sondage/new-sondage/new-sondage.component';
 import { ListUserComponent } from './user/list-user/list-user.component';
@@ -18,6 +18,8 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import {AuthService} from './services/auth.service';
 import {SondageService} from './services/sondage.service';
+import { DetailSondageComponent } from './sondage/detail-sondage/detail-sondage.component';
+import { EditSondageComponent } from './sondage/edit-sondage/edit-sondage.component';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
@@ -25,7 +27,9 @@ const  appRoutes: Routes = [
   {path: 'users', component : ListUserComponent },
   {path: 'new-user', component: NewUserComponent},
   {path: 'sondages', component : ListSondageComponent },
-  {path: 'new-sondage', component: NewSondageComponent}
+  {path: 'new-sondage', component: NewSondageComponent},
+  {path: 'detail-sondage/:id', component: DetailSondageComponent},
+  {path: 'edit-sondage/:idSond', component: EditSondageComponent}
   ];
 
 @NgModule({
@@ -39,7 +43,9 @@ const  appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    DetailSondageComponent,
+    EditSondageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,8 @@ const  appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [
     ApiServiceService,
