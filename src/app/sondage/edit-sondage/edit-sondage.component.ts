@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {SondageService} from "../../services/sondage.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Sondage} from "../../models/Sondage";
-import {AuthService} from "../../services/auth.service";
+import {SondageService} from '../../services/sondage.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Sondage} from '../../models/Sondage';
+import {AuthService} from '../../services/auth.service';
+import {IUser} from '../../interfaces/IUser';
 
 @Component({
   selector: 'app-edit-sondage',
@@ -11,6 +12,7 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./edit-sondage.component.css']
 })
 export class EditSondageComponent implements OnInit {
+  user: IUser;
   id: string;
   sondage: any;
   sondageForm: FormGroup;
@@ -23,6 +25,7 @@ export class EditSondageComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.authService.emitUser();
     this.id = this.route.snapshot.params.idSond;
     this.sondageService.getSondage(this.id).subscribe(
       (sondage) => {
@@ -30,7 +33,7 @@ export class EditSondageComponent implements OnInit {
         console.log(this.sondage);
       }
     );
-
+    this.user = this.sondageService.getUser();
     this.initForm();
   }
 
@@ -48,8 +51,10 @@ export class EditSondageComponent implements OnInit {
     const dates = this.sondageForm.get('dates').value;
     console.log(this.sondageForm.value);
 
-    const sondage = new Sondage(resume, intitule, ' ', dates);
-    this.sondageService.addSondage(sondage).subscribe(res => { console.log(res); } );
+    const sondage = new Sondage(resume, intitule, this.user.id.toString(), dates);
+    this.sondageService.editSondage(this.id, sondage).subscribe(
+      (res ) => { console.log(res); }
+    );
     this.router.navigate(['/sondages']);
   }
 

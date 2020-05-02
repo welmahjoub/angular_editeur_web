@@ -37,14 +37,25 @@ export class SondageService {
     return this.httpService.post<Sondage>('/rest/sondage/add' , sondage );
   }
 
+  // edittion d'un sondage
+  editSondage(idSond: string , sondageU: Sondage): Observable<any> {
+
+    // let data = {limit: "2"};
+    // this.httpClient.get<any>(apiUrl, {params: data});
+      const data = {id: idSond, sondage: sondageU};
+      // return this.httpService.put<any>('/rest/sondage/edit/' + idSond, {params: data});
+      return this.httpService.put<any>('/rest/sondage/edit/' + idSond, sondageU);
+  }
+
+
   // Recuperation d'une sondage avec son id
   getSondage(id): Observable<ISondage> {
     return this.httpService.get<ISondage>('/rest/sondage/get/' + id);
   }
 
   // Recuperation d'une sondage avec son id
-  removeSondage(id): Observable<ISondage> {
-    return this.httpService.get<ISondage>('/rest/sondage/remove/' + id);
+  removeSondage(id): Observable<any> {
+    return this.httpService.delete<any>('/rest/sondage/delete/' + JSON.parse(id));
   }
 
 

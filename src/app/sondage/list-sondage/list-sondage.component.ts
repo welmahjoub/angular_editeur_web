@@ -6,6 +6,7 @@ import {FormBuilder} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {SondageService} from '../../services/sondage.service';
+import {Sondage} from "../../models/Sondage";
 
 @Component({
   selector: 'app-list-sondage',
@@ -17,6 +18,7 @@ export class ListSondageComponent implements OnInit {
   userSubscription: Subscription;
   user: IUser;
   sondages;
+  private sond: Sondage;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
@@ -40,13 +42,17 @@ export class ListSondageComponent implements OnInit {
   }
 
   onDeleteSondage(id) {
-    this.router.navigate(['/detail-sondage', id]);
+    this.sondageService.removeSondage(id).subscribe(
+      (res) => {
+        const resp = res.json();
+        console.log(resp);
+      }
+    );
+    this.router.navigate(['/sondages']);
   }
 
-  onUpdateSondage(sondId) {
-    // this.router.navigate(['/edit-sondage', sondage]);
-    // this.router.navigate(['/edit-sondage', {sondage: sond}]);
-    this.router.navigate(['/edit-sondage', sondId]);
+  onUpdateSondage(sondage: ISondage) {
+    this.router.navigate(['/edit-sondage', sondage.id]);
   }
 
 
