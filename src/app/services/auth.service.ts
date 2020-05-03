@@ -18,7 +18,8 @@ export class AuthService {
   authSubject = new Subject<boolean>();
   userSubject = new  Subject<IUser>();
 
-  constructor(private httpService: HttpClient) { }
+  constructor(private httpService: HttpClient) {
+  }
 
   createNewUser(email: string, password: string) {
   }

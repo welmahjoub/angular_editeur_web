@@ -1,7 +1,13 @@
+<h2 class="text-center">Créer un Sondage</h2>
+
+<div style="padding-bottom: 2%" >
+  <button (click)="onBack()" class="btn btn-primary">Liste des sondages</button>
+</div>
+
 <div class="row">
 
   <div class="col-md-9">
-    <h2>Créer un Sondage</h2>
+<!--    <h2>Créer un Sondage</h2>-->
     <form [formGroup]= "sondageForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
@@ -22,11 +28,13 @@
         <button type="button" class="btn btn-succes" (click)="onAddDate()">Ajouter une Date</button>
       </div>
 
+      <div class="text-center" style="padding-top: 1.5%">
       <button class="btn btn-primary" type="submit" [disabled]="sondageForm.invalid">Créer le sondage</button>
+      </div>
 
     </form>
     <p class="text-danger"> {{errorMessage}}</p>
   </div>
 
 </div>
-<button (click)="onBack()" class="btn btn-primary">Liste des sondages</button>
+

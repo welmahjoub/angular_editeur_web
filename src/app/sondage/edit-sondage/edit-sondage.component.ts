@@ -31,6 +31,7 @@ export class EditSondageComponent implements OnInit {
       (sondage) => {
         this.sondage = sondage;
         console.log(this.sondage);
+        console.log(this.sondage.dateProposees.dates);
       }
     );
     this.user = this.sondageService.getUser();
@@ -50,8 +51,31 @@ export class EditSondageComponent implements OnInit {
     const intitule = this.sondageForm.get('intitule').value;
     const dates = this.sondageForm.get('dates').value;
     console.log(this.sondageForm.value);
+    const allDates: string[] = [];
 
-    const sondage = new Sondage(resume, intitule, this.user.id.toString(), dates);
+    // allDates = this.sondage.dateProposees.dates;
+
+    console.log(this.sondage.dateProposees);
+    this.sondage.dateProposees.forEach(
+      (elem) => {
+        allDates.push(elem.date);
+      }
+    )
+    console.log(allDates);
+
+    if (allDates) {
+      // allDates.push(dates);
+      dates.forEach(
+        (d) => {
+          allDates.push(d);
+        }
+      );
+    }
+
+    console.log(allDates);
+
+    const sondage = new Sondage(resume, intitule, this.user.id.toString(), allDates);
+
     this.sondageService.editSondage(this.id, sondage).subscribe(
       (res ) => { console.log(res); }
     );

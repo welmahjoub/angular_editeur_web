@@ -21,6 +21,7 @@ export class SondageService {
         console.log(this.user);
 
       });
+
   }
 
 
@@ -28,23 +29,20 @@ export class SondageService {
 
   getListeSondage(): Observable<ISondage> {
 
-    return this.httpService.get<ISondage>('/rest/sondage/' + this.user.id );
+    // return this.httpService.get<ISondage>('/rest/sondage/' + this.user.id );
+    return this.httpService.get<ISondage>('/rest/sondage/2' );
   }
 
   // Ajout d'un sondage
   addSondage(sondage): Observable<any> {
-    sondage.idUser = this.user.id;
+    // sondage.idUser = this.user.id;
+    sondage.idUser = 2;
     return this.httpService.post<Sondage>('/rest/sondage/add' , sondage );
   }
 
   // edittion d'un sondage
   editSondage(idSond: string , sondageU: Sondage): Observable<any> {
-
-    // let data = {limit: "2"};
-    // this.httpClient.get<any>(apiUrl, {params: data});
-      const data = {id: idSond, sondage: sondageU};
-      // return this.httpService.put<any>('/rest/sondage/edit/' + idSond, {params: data});
-      return this.httpService.put<any>('/rest/sondage/edit/' + idSond, sondageU);
+      return this.httpService.put<Sondage>('/rest/sondage/edit/' + idSond, sondageU);
   }
 
 

@@ -12,3 +12,9 @@ export interface ISondage {
   dateCreation: string;
   datereunion: string;
 }
+
+export interface IPropositions {
+  id: string;
+  user: any[];
+  date:string;
+}

@@ -1,6 +1,11 @@
+<h2 class="text-center">Modification  Sondage</h2>
+
+<div style="padding-bottom: 2%" >
+  <button  (click)="onBack()" class="btn btn-primary">Liste des sondages</button>
+</div>
+
 <div class="row">
   <div class="col-md-6">
-    <h2>Créer un Sondage</h2>
     <form [formGroup]= "sondageForm" (ngSubmit)="onSubmit()" *ngIf="sondage">
 
       <div class="form-group">
@@ -16,20 +21,24 @@
       </div>
 
       <div formArrayName="dates">
-        <h3>Vos nouvelle dates pour la reunion</h3>
+        <h4>Dates pour la reunion</h4>
         <div class="form-group" *ngFor="let hobbyControl of getDates().controls; let i=index">
           <input type="datetime-local" class="form-control" [formControlName]="i">
         </div>
         <button type="button" class="btn btn-succes" (click)="onAddDate()">Ajouter une Date</button>
       </div>
 
-      <button class="btn btn-primary" type="submit" [disabled]="sondageForm.invalid">Modifier le sondage</button>
+      <div class="text-center" style="padding-top: 1.5%">
+
+        <button class="btn btn-primary"
+                type="submit" [disabled]="sondageForm.invalid">Modifier le sondage</button>
+      </div>
 
     </form>
     <p class="text-danger"> {{errorMessage}}</p>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6" style="padding-top: 1.5%">
 
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -47,4 +56,4 @@
   </div>
 
 </div>
-<button (click)="onBack()" class="btn btn-primary">Liste des sondages</button>
+
