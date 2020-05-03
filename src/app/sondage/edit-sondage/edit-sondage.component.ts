@@ -5,6 +5,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Sondage} from '../../models/Sondage';
 import {AuthService} from '../../services/auth.service';
 import {IUser} from '../../interfaces/IUser';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-edit-sondage',
@@ -56,25 +57,35 @@ export class EditSondageComponent implements OnInit {
     // allDates = this.sondage.dateProposees.dates;
 
     console.log(this.sondage.dateProposees);
+
+
+
+
     this.sondage.dateProposees.forEach(
       (elem) => {
-        allDates.push(elem.date);
+        const pipe = new DatePipe('en-US');
+        const myFormattedDate = pipe.transform(elem.date, 'short');
+        allDates.push(myFormattedDate);
       }
-    )
+    ) ;
+    // this.sondage.dateProposees.forEach(
+    //   (elem) => {
+    //     allDates.push(elem.date);
+    //   }
+    // )
     console.log(allDates);
 
-    if (allDates) {
-      // allDates.push(dates);
-      dates.forEach(
+
+    dates.forEach(
         (d) => {
           allDates.push(d);
         }
       );
-    }
 
     console.log(allDates);
 
-    const sondage = new Sondage(resume, intitule, this.user.id.toString(), allDates);
+    // const sondage = new Sondage(resume, intitule, this.user.id.toString(), allDates);
+    const sondage = new Sondage(resume, intitule, '2', allDates);
 
     this.sondageService.editSondage(this.id, sondage).subscribe(
       (res ) => { console.log(res); }

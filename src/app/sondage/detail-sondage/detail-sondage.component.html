@@ -22,7 +22,7 @@
       <div class="panel-body">
         <ul *ngIf="sondage">
           <li *ngFor=" let proposition  of sondage.dateProposees">
-            {{proposition.date}}
+            {{proposition.date|date}}
           </li>
         </ul>
       </div>
