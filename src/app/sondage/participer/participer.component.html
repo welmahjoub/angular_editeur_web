@@ -35,10 +35,14 @@
               <h3 class="panel-title">Choisir une date</h3>
             </div>
             <div class="panel-body">
+              <div formArrayName="dates">
+                <div class="radio" *ngFor="let date of getDates().controls; let i=index">
+                 <label><input type="radio" [formControlName]= "i" *ngIf="date">{{date.value.date | date}}</label>
+                </div>
 
-              <div class="radio">
-                <label><input type="radio" name="optradio">Option 2</label>
               </div>
+
+
 
             </div>
           </div>
