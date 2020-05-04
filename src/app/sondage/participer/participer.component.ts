@@ -4,8 +4,7 @@ import {AuthService} from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SondageService} from '../../services/sondage.service';
 import {ISondage} from '../../interfaces/ISondage';
-import {Subject} from "rxjs";
-import {IUser} from "../../interfaces/IUser";
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-participer',
@@ -49,7 +48,7 @@ export class ParticiperComponent implements OnInit {
       }
     );
     this.emitSondage();
-    this.updateDate();
+   // this.updateDate();
     this.sondageSubject.subscribe(
       (sond) => {console.log(sond); }
     );
@@ -67,6 +66,19 @@ export class ParticiperComponent implements OnInit {
 
   emitSondage() {
     this.sondageSubject.next(this.sondage);
+    const dates = new FormArray([]);
+    this.sondageSubject.subscribe(
+      (sond) => {
+        sond.dateProposees.forEach(
+          (date) => {
+            const  d = new FormControl(null);
+            d.setValue(date);
+            dates.push(d);
+          }
+        );
+        this.participeForm.setControl('dates', dates);
+        }
+    );
   }
 
   updateDate() {
