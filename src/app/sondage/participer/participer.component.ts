@@ -48,7 +48,7 @@ export class ParticiperComponent implements OnInit {
       }
     );
     this.emitSondage();
-   // this.updateDate();
+    this.updateDate();
     this.sondageSubject.subscribe(
       (sond) => {console.log(sond); }
     );
@@ -66,19 +66,20 @@ export class ParticiperComponent implements OnInit {
 
   emitSondage() {
     this.sondageSubject.next(this.sondage);
-    const dates = new FormArray([]);
-    this.sondageSubject.subscribe(
-      (sond) => {
-        sond.dateProposees.forEach(
-          (date) => {
-            const  d = new FormControl(null);
-            d.setValue(date);
-            dates.push(d);
-          }
-        );
-        this.participeForm.setControl('dates', dates);
-        }
-    );
+
+    // const dates = new FormArray([]);
+    // this.sondageSubject.subscribe(
+    //   (sond) => {
+    //     sond.dateProposees.forEach(
+    //       (date) => {
+    //         const  d = new FormControl(null);
+    //         d.setValue(date);
+    //         dates.push(d);
+    //       }
+    //     );
+    //     this.participeForm.setControl('dates', dates);
+    //     }
+    // );
   }
 
   updateDate() {

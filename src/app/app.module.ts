@@ -21,6 +21,7 @@ import {SondageService} from './services/sondage.service';
 import { DetailSondageComponent } from './sondage/detail-sondage/detail-sondage.component';
 import { EditSondageComponent } from './sondage/edit-sondage/edit-sondage.component';
 import { ParticiperComponent } from './sondage/participer/participer.component';
+import { ParticipeComponent } from './sondage/participe/participe.component';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
@@ -31,7 +32,8 @@ const  appRoutes: Routes = [
   {path: 'new-sondage', component: NewSondageComponent},
   {path: 'detail-sondage/:id', component: DetailSondageComponent},
   {path: 'edit-sondage/:idSond', component: EditSondageComponent},
-  {path: 'participe/:id', component: ParticiperComponent}
+  {path: 'participe/:id', component: ParticiperComponent},
+  {path: 'participer/:id', component: ParticipeComponent}
   ];
 
 @NgModule({
@@ -48,7 +50,8 @@ const  appRoutes: Routes = [
     SignupComponent,
     DetailSondageComponent,
     EditSondageComponent,
-    ParticiperComponent
+    ParticiperComponent,
+    ParticipeComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,8 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {IUser} from '../interfaces/IUser';
 import {Sondage} from '../models/Sondage';
+import {IParticipant} from "../interfaces/IParticipant";
+import {Participant} from "../models/Participant";
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +56,11 @@ export class SondageService {
   // Recuperation d'une sondage avec son id
   removeSondage(id): Observable<any> {
     return this.httpService.delete<any>('/rest/sondage/delete/' + JSON.parse(id));
+  }
+
+  // Participation à un sondage : Voter pour un date precise
+  ParticiperSondage(participant: Participant): Observable<any> {
+    return this.httpService.post<Sondage>('/rest/sondage/participer' , participant);
   }
 
 
