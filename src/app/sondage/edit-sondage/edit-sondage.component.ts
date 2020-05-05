@@ -6,6 +6,9 @@ import {Sondage} from '../../models/Sondage';
 import {AuthService} from '../../services/auth.service';
 import {IUser} from '../../interfaces/IUser';
 import {DatePipe} from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 @Component({
   selector: 'app-edit-sondage',

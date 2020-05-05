@@ -36,15 +36,14 @@
           </div>
           <div class="panel-body">
 
-            <label *ngFor="let date of dates; let i=index">
-              <input
-                formControlName="dates"
-                type="radio"
-                name="dates"
-                [value]="date.id"
-              />
-              {{date.date | date}}
-            </label>
+            <div *ngFor="let date of dates; let i=index">
+                <label>
+                  <input formControlName="dates" type="radio" name="dates" [value]="date.id"/>
+                  {{date.date |date:'full':'+0200':'fr'}}
+                </label>
+              <br/>
+            </div>
+
 
           </div>
         </div>

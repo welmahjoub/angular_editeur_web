@@ -20,11 +20,25 @@
         <h3 class="panel-title">Les dates proposées</h3>
       </div>
       <div class="panel-body">
-        <ul *ngIf="sondage">
-          <li *ngFor=" let proposition  of sondage.dateProposees">
-            {{proposition.date|date}}
-          </li>
-        </ul>
+        <form [formGroup]= "validerDateForm" (ngSubmit)="onSubmit()" *ngIf="sondage && !sondage.clos">
+          <div *ngFor="let date of dates; let i=index">
+            <label>
+              <input formControlName="date" type="radio" name="date" [value]="date.id"/>
+              {{date.date |date:'full':'+0200':'fr'}}
+            </label>
+            <br/>
+          </div>
+          <div class="text-center" style="padding-top: 1.5%">
+            <button class="btn btn-primary" type="submit" [disabled]="validerDateForm.invalid">Valider</button>
+          </div>
+        </form>
+
+        <div *ngIf="sondage && sondage.clos">
+          <ul *ngFor="let date of dates">
+            <li><b>{{date.date |date:'full':'+0200':'fr'}} </b></li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>

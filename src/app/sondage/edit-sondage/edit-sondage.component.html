@@ -45,11 +45,18 @@
         <h3 class="panel-title">Les dates proposées</h3>
       </div>
       <div class="panel-body">
-        <ul *ngIf="sondage">
-          <li *ngFor=" let proposition  of sondage.dateProposees">
-            {{proposition.date|date}}
-          </li>
+        <ul *ngFor="let date of dates">
+          <li><b>{{date.date |date:'full':'+0200':'fr'}} </b></li>
         </ul>
+
+        <div *ngIf="sondage">
+          <ul *ngFor=" let proposition  of sondage.dateProposees">
+            <li >
+             <b>{{proposition.date|date:'full':'+0200':'fr'}}</b>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
 

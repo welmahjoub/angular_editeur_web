@@ -59,8 +59,13 @@ export class SondageService {
   }
 
   // Participation à un sondage : Voter pour un date precise
-  ParticiperSondage(participant: Participant): Observable<any> {
+  participerSondage(participant: Participant): Observable<any> {
     return this.httpService.post<Sondage>('/rest/sondage/participer' , participant);
+  }
+
+  // Valider une date final pour la reunion
+  validerDate(id: string): Observable<any> {
+    return this.httpService.post<any>('/rest/sondage/valider/' + JSON.parse(id), '');
   }
 
 

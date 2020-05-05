@@ -6,6 +6,9 @@ import {SondageService} from '../../services/sondage.service';
 import {ISondage} from '../../interfaces/ISondage';
 import {Participant} from '../../models/Participant';
 import {Subject} from 'rxjs';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 @Component({
   selector: 'app-participe',
@@ -71,7 +74,7 @@ export class ParticipeComponent implements OnInit {
     const email = this.participeForm.get('email').value;
     const idDateChoisie = this.participeForm.get('dates').value;
     const participant = new Participant( nom, prenom, email, idDateChoisie)
-    this.sondageService.ParticiperSondage(participant).subscribe(
+    this.sondageService.participerSondage(participant).subscribe(
       (res) => {
         console.log(res);
       }

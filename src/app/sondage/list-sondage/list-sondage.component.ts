@@ -6,7 +6,10 @@ import {FormBuilder} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {SondageService} from '../../services/sondage.service';
-import {Sondage} from "../../models/Sondage";
+import {Sondage} from '../../models/Sondage';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 @Component({
   selector: 'app-list-sondage',

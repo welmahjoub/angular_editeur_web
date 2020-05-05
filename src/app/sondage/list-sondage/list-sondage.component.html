@@ -12,7 +12,8 @@
         <th scope="col">#</th>
         <th scope="col">Intitulé</th>
         <th scope="col">Date de creation</th>
-        <th scope="col">Action</th>
+        <th scope="col" style="width: auto;" class="text-center">Action</th>
+        <th scope="col">Statut</th>
       </tr>
       </thead>
       <tbody>
@@ -20,17 +21,20 @@
 
         <th scope="row">{{sondage.id}}</th>
         <td>{{sondage.reunion.intitule}}</td>
-        <td>{{sondage.dateCreation|date:"short"}}</td>
+        <td>{{sondage.dateCreation|date:'short':'+0200':'fr'}}</td>
 
-        <td><button (click)="onViewSondage(sondage.id)"
+        <td class="text-center"><button (click)="onViewSondage(sondage.id)"
                     class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span></button>
 
         <button (click)="onUpdateSondage(sondage)"
+                *ngIf="!sondage.clos"
                     class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></button>
 
         <button (click)="onDeleteSondage(sondage.id)"
             class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></button> </td>
 
+        <td *ngIf="sondage.clos"><span class="label label-success" >Clos</span></td>
+        <td *ngIf="!sondage.clos"><span class="label label-info" >En cours</span></td>
 
       </tr>
 
