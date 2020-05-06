@@ -25,6 +25,7 @@
             <label>
               <input formControlName="date" type="radio" name="date" [value]="date.id"/>
               {{date.date |date:'full':'+0200':'fr'}}
+              <span class="badge">{{date.users.length}} vote (s) </span>
             </label>
             <br/>
           </div>
@@ -35,7 +36,9 @@
 
         <div *ngIf="sondage && sondage.clos">
           <ul *ngFor="let date of dates">
-            <li><b>{{date.date |date:'full':'+0200':'fr'}} </b></li>
+            <li><b>{{date.date |date:'full':'+0200':'fr'}} </b>
+              <span class="badge">{{date.users.length}} vote (s) </span>
+            </li>
           </ul>
         </div>
 

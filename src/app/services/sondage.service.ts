@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ISondage} from '../interfaces/ISondage';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {IUser} from '../interfaces/IUser';
 import {Sondage} from '../models/Sondage';
-import {IParticipant} from "../interfaces/IParticipant";
-import {Participant} from "../models/Participant";
+import {Participant} from '../models/Participant';
+import {Text} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
@@ -36,10 +36,11 @@ export class SondageService {
   }
 
   // Ajout d'un sondage
-  addSondage(sondage): Observable<any> {
+  // addSondage(sondage): Observable<any> {
+  addSondage(sondage): Promise<any> {
     // sondage.idUser = this.user.id;
     sondage.idUser = 2;
-    return this.httpService.post<Sondage>('/rest/sondage/add' , sondage );
+    return this.httpService.post<Sondage>('/rest/sondage/add' , sondage ).toPromise();
   }
 
   // edittion d'un sondage
@@ -54,8 +55,9 @@ export class SondageService {
   }
 
   // Recuperation d'une sondage avec son id
-  removeSondage(id): Observable<any> {
-    return this.httpService.delete<any>('/rest/sondage/delete/' + JSON.parse(id));
+  removeSondage(id: string): Observable<any> {
+    // return this.httpService.delete<any>('/rest/sondage/delete/' + JSON.parse(id) ).toPromise();
+    return this.httpService.delete<any>('/rest/sondage/delete/' + id);
   }
 
   // Participation à un sondage : Voter pour un date precise

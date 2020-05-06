@@ -77,9 +77,13 @@ export class ParticipeComponent implements OnInit {
     this.sondageService.participerSondage(participant).subscribe(
       (res) => {
         console.log(res);
+        this.onBack();
       }
     );
     console.log(this.participeForm.value);
+  }
+  onBack() {
+    this.router.navigate(['/sondages']);
   }
 
 }

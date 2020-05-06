@@ -32,8 +32,8 @@ const  appRoutes: Routes = [
   {path: 'new-sondage', component: NewSondageComponent},
   {path: 'detail-sondage/:id', component: DetailSondageComponent},
   {path: 'edit-sondage/:idSond', component: EditSondageComponent},
-  {path: 'participe/:id', component: ParticiperComponent},
-  {path: 'participer/:id', component: ParticipeComponent}
+  {path: 'participer/:id', component: ParticiperComponent},
+  {path: 'participe/:id', component: ParticipeComponent}
   ];
 
 @NgModule({

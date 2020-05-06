@@ -44,7 +44,17 @@ export class NewSondageComponent implements OnInit {
     console.log(this.sondageForm.value);
 
     const sondage = new Sondage(resume, intitule, ' ', dates);
-    this.sondageService.addSondage(sondage).subscribe(res => { console.log(res); } );
+
+    this.sondageService.addSondage(sondage).then(
+      (res) => {
+        console.log(res);
+        this.onBack();
+        // this.router.navigate(['/sondages']);
+      },
+      (error) => {
+        console.log(error);
+      }
+        );
     this.router.navigate(['/sondages']);
   }
 

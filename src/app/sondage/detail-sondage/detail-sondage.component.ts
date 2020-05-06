@@ -68,6 +68,7 @@ export class DetailSondageComponent implements OnInit {
     this.sondageService.validerDate(idDateChoisie).subscribe(
       (res) => {
         console.log(res);
+        this.onBack();
       }
     );
   }

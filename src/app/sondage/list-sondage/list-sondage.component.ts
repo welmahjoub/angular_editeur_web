@@ -21,7 +21,7 @@ export class ListSondageComponent implements OnInit {
   userSubscription: Subscription;
   user: IUser;
   sondages;
-  private sond: Sondage;
+  // private sond: Sondage;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
@@ -47,8 +47,11 @@ export class ListSondageComponent implements OnInit {
   onDeleteSondage(id) {
     this.sondageService.removeSondage(id).subscribe(
       (res) => {
-        const resp = res.json();
-        console.log(resp);
+        console.log(res.toString());
+        // this.router.navigate(['/sondages']);
+      },
+      (error) => {
+        console.log(error);
       }
     );
     this.router.navigate(['/sondages']);

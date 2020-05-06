@@ -60,10 +60,6 @@ export class EditSondageComponent implements OnInit {
     // allDates = this.sondage.dateProposees.dates;
 
     console.log(this.sondage.dateProposees);
-
-
-
-
     this.sondage.dateProposees.forEach(
       (elem) => {
         // const pipe = new DatePipe('en-US');
@@ -91,9 +87,11 @@ export class EditSondageComponent implements OnInit {
     const sondage = new Sondage(resume, intitule, '2', allDates);
 
     this.sondageService.editSondage(this.id, sondage).subscribe(
-      (res ) => { console.log(res); }
+      (res ) => {
+        console.log(res);
+        this.onBack();
+      }
     );
-    this.router.navigate(['/sondages']);
   }
 
   getDates() {
