@@ -89,6 +89,10 @@ export class EditSondageComponent implements OnInit {
     this.sondageService.editSondage(this.id, sondage).subscribe(
       (res ) => {
         console.log(res);
+        // Si la modif a été effectuée emettre la liste pour rafraichir la celle-ci dans le component list-sondage
+        if (res) {
+          this.sondageService.emitSondage();
+        }
         this.onBack();
       }
     );

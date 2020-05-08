@@ -20,7 +20,8 @@ export class ListSondageComponent implements OnInit {
 
   userSubscription: Subscription;
   user: IUser;
-  sondages;
+  sondages: ISondage;
+  sondagesSubscription: Subscription;
   // private sond: Sondage;
 
   constructor(private formBuilder: FormBuilder,
@@ -31,12 +32,22 @@ export class ListSondageComponent implements OnInit {
   ngOnInit() {
 
     this.authService.emitUser();
-    this.sondageService.getListeSondage().subscribe(
-          (sondages) => {
-            this.sondages = sondages ;
-            console.log(sondages);
-          }
-        );
+
+    // Souscription au subject de sondage pour recupérer la liste des sondages
+    this.sondagesSubscription = this.sondageService.sondagesSubject.subscribe(
+      (sonds) => {
+        this.sondages = sonds;
+        // console.log(sonds);
+      }
+    );
+    // On fait emit pour declencher la souscription
+    this.sondageService.emitSondage();
+    // this.sondageService.getListeSondage().subscribe(
+    //       (sondages) => {
+    //         this.sondages = sondages ;
+    //         console.log(sondages);
+    //       }
+    //     );
     this.user = this.sondageService.getUser();
   }
 
@@ -48,6 +59,10 @@ export class ListSondageComponent implements OnInit {
     this.sondageService.removeSondage(id).subscribe(
       (res) => {
         console.log(res.toString());
+        // Si la suppression a été effectuée emettre la liste pour rafraichir la celle-ci dans le component list-sondage
+        if (res) {
+          this.sondageService.emitSondage();
+        }
         // this.router.navigate(['/sondages']);
       },
       (error) => {
@@ -59,6 +74,10 @@ export class ListSondageComponent implements OnInit {
 
   onUpdateSondage(sondage: ISondage) {
     this.router.navigate(['/edit-sondage', sondage.id]);
+  }
+
+  ngOnDestroy() {
+    this.sondagesSubscription.unsubscribe();
   }
 
 

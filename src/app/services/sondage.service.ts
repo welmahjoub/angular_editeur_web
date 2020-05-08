@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {ISondage} from '../interfaces/ISondage';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
@@ -14,6 +14,8 @@ import {Text} from "@angular/compiler";
 export class SondageService {
 
   user: IUser;
+  sondages: ISondage;
+  sondagesSubject = new Subject<ISondage>();
 
   constructor(private httpService: HttpClient, private  authService: AuthService) {
 
@@ -23,6 +25,19 @@ export class SondageService {
         console.log(this.user);
 
       });
+
+    // this.emitSondage();
+
+  }
+
+  emitSondage() {
+    this.getListeSondage().subscribe(
+      (sondages) => {
+        this.sondages = sondages;
+        console.log(sondages);
+        this.sondagesSubject.next(this.sondages);
+      }
+    );
 
   }
 

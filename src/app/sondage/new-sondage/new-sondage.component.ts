@@ -48,8 +48,11 @@ export class NewSondageComponent implements OnInit {
     this.sondageService.addSondage(sondage).then(
       (res) => {
         console.log(res);
+        // Si l'ajout a été effectué emettre la liste pour rafraichir la celle-ci dans le component list-sondage
+        if (res) {
+          this.sondageService.emitSondage();
+        }
         this.onBack();
-        // this.router.navigate(['/sondages']);
       },
       (error) => {
         console.log(error);
