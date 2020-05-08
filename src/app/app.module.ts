@@ -23,6 +23,7 @@ import { EditSondageComponent } from './sondage/edit-sondage/edit-sondage.compon
 import { ParticiperComponent } from './sondage/participer/participer.component';
 import { ParticipeComponent } from './sondage/participe/participe.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
@@ -35,6 +36,7 @@ const  appRoutes: Routes = [
   {path: 'edit-sondage/:idSond', component: EditSondageComponent},
   {path: 'participer/:id', component: ParticiperComponent},
   {path: 'participe/:id', component: ParticipeComponent},
+  {path: '', component: AccueilComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: 'not-found'}
   ];
@@ -55,7 +57,8 @@ const  appRoutes: Routes = [
     EditSondageComponent,
     ParticiperComponent,
     ParticipeComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
