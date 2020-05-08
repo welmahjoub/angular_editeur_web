@@ -1,0 +1,42 @@
+<div class="row">
+  <div>
+    <a class="btn btn-success" routerLink="/new-sondage">Ajouter un nouveau sondage</a>
+  </div>
+  <!--<a class="btn btn-success" [routerLink]="/new-sondage/">Ajouter un nouveau sondage</a>-->
+  <br>
+  <div class="col-lg-12">
+
+
+    <table class="table table-hover">
+      <!--    <table class="table table-striped">-->
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">nom</th>
+        <th scope="col">prenom</th>
+        <th scope="col" style="width: auto;" class="text-center">Action</th>
+        <th scope="col">Statut</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let participant of participants">
+
+        <th scope="row">{{participant.id}}</th>
+        <td>{{participant.nom}}</td>
+        <td>{{participant.prenom}}</td>
+
+        <td class="text-center"><button (click)="onViewSondage(participant.id)"
+                                        class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span></button>
+
+          <button (click)="onUpdateSondage(participant)"
+                  class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+
+          <button (click)="onDeleteSondage(participant.id)"
+                  class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></button> </td>
+
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
