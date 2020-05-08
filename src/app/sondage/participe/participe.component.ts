@@ -47,6 +47,8 @@ export class ParticipeComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      preferences: ['', Validators.required],
+      allergies: ['', Validators.required],
       dates: ['']
       // dates: ['']
       // dates : this.formBuilder.array([])
@@ -72,8 +74,10 @@ export class ParticipeComponent implements OnInit {
     const nom = this.participeForm.get('firstName').value;
     const prenom = this.participeForm.get('lastName').value;
     const email = this.participeForm.get('email').value;
+    const preferences = this.participeForm.get('preferences').value;
+    const allergies = this.participeForm.get('allergies').value;
     const idDateChoisie = this.participeForm.get('dates').value;
-    const participant = new Participant( nom, prenom, email, idDateChoisie)
+    const participant = new Participant( nom, prenom, email, preferences, allergies, idDateChoisie)
     this.sondageService.participerSondage(participant).subscribe(
       (res) => {
         console.log(res);
