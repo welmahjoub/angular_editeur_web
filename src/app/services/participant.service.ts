@@ -30,6 +30,11 @@ export class ParticipantService {
     return this.httpService.get<IParticipant>('/rest/participants/' );
   }
 
+  getParticipant(id: string): Observable<IParticipant> {
+    // return this.httpService.get<ISondage>('/rest/sondage/' + this.user.id );
+    return this.httpService.get<IParticipant>('/rest/participants/get/' + id );
+  }
+
   deleteParticipant(id: string): Observable<any> {
     // return this.httpService.delete<any>('/rest/sondage/delete/' + JSON.parse(id) ).toPromise();
     return this.httpService.delete<any>('/rest/participants/delete/' + id);

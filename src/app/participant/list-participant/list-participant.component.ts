@@ -3,6 +3,7 @@ import {ISondage} from '../../interfaces/ISondage';
 import {IParticipant} from '../../interfaces/IParticipant';
 import {Subscription} from 'rxjs';
 import {ParticipantService} from '../../services/participant.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-participant',
@@ -14,7 +15,8 @@ export class ListParticipantComponent implements OnInit {
 participants: IParticipant;
 participantsSubscription: Subscription;
 
-  constructor(private participantService: ParticipantService) {}
+  constructor(private participantService: ParticipantService,
+              private router: Router) {}
 
   ngOnInit() {
     this.participantsSubscription = this.participantService.participantsSubject.subscribe(
@@ -26,7 +28,9 @@ participantsSubscription: Subscription;
     this.participantService.emitParticipants();
   }
 
-  onViewSondage(id) {
+
+  onViewSondage(participant: IParticipant) {
+    this.router.navigate(['/detail-participant', participant.id]);
   }
 
   onDeleteSondage(id) {

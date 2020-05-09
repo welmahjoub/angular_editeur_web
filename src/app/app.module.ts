@@ -27,6 +27,7 @@ import { ListParticipantComponent } from './participant/list-participant/list-pa
 import { DetailParticipantComponent } from './participant/detail-participant/detail-participant.component';
 import {ParticipantService} from './services/participant.service';
 import { DetailUserComponent } from './user/detail-user/detail-user.component';
+import {UserService} from './services/user.service';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
@@ -41,6 +42,7 @@ const  appRoutes: Routes = [
   // {path: 'participer/:id', component: ParticiperComponent},
   {path: 'participe/:id', component: ParticipeComponent},
   {path: 'participants', component : ListParticipantComponent },
+  {path: 'detail-participant/:id', component: DetailParticipantComponent},
   {path: '', component: AccueilComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: 'not-found'}
@@ -80,7 +82,8 @@ const  appRoutes: Routes = [
     ApiServiceService,
     AuthService,
     SondageService,
-    ParticipantService
+    ParticipantService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

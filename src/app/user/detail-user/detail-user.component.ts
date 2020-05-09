@@ -23,7 +23,7 @@ export class DetailUserComponent implements OnInit {
       (user) => {
         console.log(user);
         this.user = user;
-        this.emitUser();
+        // this.emitUser();
       }
     );
   }

@@ -1,1 +1,47 @@
-<p>detail-participant works!</p>
+<div class="row">
+
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title"> Détail Participant </h2>
+      </div>
+
+      <div class="panel-body" *ngIf="participant">
+
+        <div class="form-group">
+          <label for="firstName">Prénom</label>
+          <input type="text" readonly id="firstName" [(ngModel)]="participant.prenom" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">Nom</label>
+          <input type="text" readonly id="lastName" [(ngModel)]="participant.nom" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">Mail</label>
+          <input type="text" readonly id="mail" [(ngModel)]="participant.mail" class="form-control">
+        </div>
+
+
+        <div class="form-group">
+          <label for="preferences">Preferences Alimentaires</label>
+          <textarea class="form-control" readonly id="preferences" rows="3" [(ngModel)]="participant.preferences"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="allergies">Allergies</label>
+          <textarea class="form-control" readonly id="allergies" rows="3" [(ngModel)]="participant.allergies"></textarea>
+        </div>
+
+      </div>
+    </div>
+    <div style="padding-bottom: 2%" >
+      <button (click)="onBack()" class="btn btn-primary">Liste participant</button>
+    </div>
+  </div>
+
+</div>
+
+
+
