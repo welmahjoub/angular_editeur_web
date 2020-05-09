@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ISondage} from '../../interfaces/ISondage';
-import {IParticipant} from "../../interfaces/IParticipant";
-import {Subscription} from "rxjs";
-import {ParticipantService} from "../../services/participant.service";
+import {IParticipant} from '../../interfaces/IParticipant';
+import {Subscription} from 'rxjs';
+import {ParticipantService} from '../../services/participant.service';
 
 @Component({
   selector: 'app-list-participant',

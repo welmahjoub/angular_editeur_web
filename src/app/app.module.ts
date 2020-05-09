@@ -26,6 +26,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ListParticipantComponent } from './participant/list-participant/list-participant.component';
 import { DetailParticipantComponent } from './participant/detail-participant/detail-participant.component';
 import {ParticipantService} from './services/participant.service';
+import { DetailUserComponent } from './user/detail-user/detail-user.component';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
@@ -62,7 +63,8 @@ const  appRoutes: Routes = [
     FourOhFourComponent,
     AccueilComponent,
     ListParticipantComponent,
-    DetailParticipantComponent
+    DetailParticipantComponent,
+    DetailUserComponent
   ],
   imports: [
     BrowserModule,
