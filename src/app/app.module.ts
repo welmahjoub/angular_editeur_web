@@ -32,6 +32,7 @@ const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
   { path: 'auth/signin', component: SigninComponent},
   {path: 'users', component : ListUserComponent },
+  {path: 'detail-user/:id', component: DetailUserComponent},
   {path: 'new-user', component: NewUserComponent},
   {path: 'sondages', component : ListSondageComponent },
   {path: 'new-sondage', component: NewSondageComponent},

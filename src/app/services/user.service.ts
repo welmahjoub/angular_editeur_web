@@ -24,8 +24,11 @@ export class UserService {
   }
 
   getListUser(): Observable<IUser> {
-    // return this.httpService.get<ISondage>('/rest/sondage/' + this.user.id );
     return this.httpService.get<IUser>('/rest/users/' );
+  }
+
+  getUser(id: string): Observable<IUser> {
+    return this.httpService.get<IUser>('/rest/users/get/' + id );
   }
 
   deleteUser(id: string): Observable<any> {

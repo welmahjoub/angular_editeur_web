@@ -33,7 +33,8 @@ export class ListUserComponent implements OnInit {
     this.userService.emitUsers();
   }
 
-  onViewSondage(id) {
+  onViewSondage(user: IUser) {
+    this.router.navigate(['/detail-user', user.id]);
   }
 
 }

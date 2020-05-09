@@ -1,0 +1,35 @@
+<div class="row">
+
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title"> Détail Utilisateur </h2>
+      </div>
+
+      <div class="panel-body" *ngIf="user">
+
+         <div class="form-group">
+           <label for="firstName">Prénom</label>
+           <input type="text" readonly id="firstName" [(ngModel)]="user.prenom" class="form-control">
+         </div>
+
+         <div class="form-group">
+           <label for="firstName">Nom</label>
+           <input type="text" readonly id="lastName" [(ngModel)]="user.nom" class="form-control">
+         </div>
+
+        <div class="form-group">
+          <label for="firstName">Mail</label>
+          <input type="text" readonly id="mail" [(ngModel)]="user.mail" class="form-control">
+        </div>
+
+      </div>
+    </div>
+    <div style="padding-bottom: 2%" >
+      <button (click)="onBack()" class="btn btn-primary">Liste utilisateur</button>
+    </div>
+  </div>
+
+</div>
+
+
