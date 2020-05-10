@@ -55,36 +55,10 @@ export class EditSondageComponent implements OnInit {
     const intitule = this.sondageForm.get('intitule').value;
     const dates = this.sondageForm.get('dates').value;
     console.log(this.sondageForm.value);
-    const allDates: string[] = [];
-
-    // allDates = this.sondage.dateProposees.dates;
-
-    console.log(this.sondage.dateProposees);
-    this.sondage.dateProposees.forEach(
-      (elem) => {
-        // const pipe = new DatePipe('en-US');
-        // const myFormattedDate = pipe.transform(elem.date, 'short');
-        allDates.push(elem.date);
-      }
-    ) ;
-    // this.sondage.dateProposees.forEach(
-    //   (elem) => {
-    //     allDates.push(elem.date);
-    //   }
-    // )
-    console.log(allDates);
-
-
-    dates.forEach(
-        (d) => {
-          allDates.push(d);
-        }
-      );
-
-    console.log(allDates);
 
     // const sondage = new Sondage(resume, intitule, this.user.id.toString(), allDates);
-    const sondage = new Sondage(resume, intitule, '2', allDates);
+    // const sondage = new Sondage(resume, intitule, '2', allDates);
+    const sondage = new Sondage(resume, intitule, '2', dates);
 
     this.sondageService.editSondage(this.id, sondage).subscribe(
       (res ) => {
@@ -98,6 +72,9 @@ export class EditSondageComponent implements OnInit {
     );
   }
 
+
+
+
   getDates() {
     return this.sondageForm.get('dates') as FormArray ;
   }
@@ -109,6 +86,27 @@ export class EditSondageComponent implements OnInit {
 
   onBack() {
     this.router.navigate(['/sondages']);
+  }
+
+  recupererAncienneDateAvecNew() {
+
+    const dates = this.sondageForm.get('dates').value;
+    const allDates: string[] = [];
+
+    console.log(this.sondage.dateProposees);
+    this.sondage.dateProposees.forEach(
+      (elem) => {
+        allDates.push(elem.date);
+      }
+    ) ;
+    console.log(allDates);
+    dates.forEach(
+      (d) => {
+        allDates.push(d);
+      }
+    );
+
+    console.log(allDates);
   }
 
 }

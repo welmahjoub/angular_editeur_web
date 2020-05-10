@@ -22,12 +22,22 @@
       <div class="panel-body">
         <form [formGroup]= "validerDateForm" (ngSubmit)="onSubmit()" *ngIf="sondage && !sondage.clos">
           <div *ngFor="let date of dates; let i=index">
-            <label>
-              <input formControlName="date" type="radio" name="date" [value]="date.id"/>
-              {{date.date |date:'full':'+0200':'fr'}}
-              <span class="badge">{{date.users.length}} vote (s) </span>
-            </label>
-            <br/>
+            <div class="row">
+             <div class="col-md-9">
+               <label>
+                 <input formControlName="date" type="radio" name="date" [value]="date.id"/>
+                 {{date.date |date:'full':'+0200':'fr'}}
+                 <span class="badge">{{date.users.length}} vote (s) </span>
+               </label>
+             </div>
+              <div class="col-md-3">
+                <select class="form-control" style="width: 8em" id="selectList">
+                  <option selected disabled>Votants</option>
+                  <option *ngFor="let part of date.users">{{part.nom}}</option>
+                </select>
+              </div>
+            </div>
+
           </div>
           <div class="text-center" style="padding-top: 1.5%">
             <button class="btn btn-primary" type="submit" [disabled]="validerDateForm.invalid">Valider</button>
