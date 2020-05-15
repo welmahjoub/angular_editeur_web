@@ -28,21 +28,23 @@ import { DetailParticipantComponent } from './participant/detail-participant/det
 import {ParticipantService} from './services/participant.service';
 import { DetailUserComponent } from './user/detail-user/detail-user.component';
 import {UserService} from './services/user.service';
+import {AuthGuardService} from './services/auth-guard.service';
+import { ThanksComponent } from './thanks/thanks.component';
 
 const  appRoutes: Routes = [
   { path: 'auth/signup', component : SignupComponent},
   { path: 'auth/signin', component: SigninComponent},
-  {path: 'users', component : ListUserComponent },
-  {path: 'detail-user/:id', component: DetailUserComponent},
-  {path: 'new-user', component: NewUserComponent},
-  {path: 'sondages', component : ListSondageComponent },
-  {path: 'new-sondage', component: NewSondageComponent},
-  {path: 'detail-sondage/:id', component: DetailSondageComponent},
-  {path: 'edit-sondage/:idSond', component: EditSondageComponent},
+  {path: 'users', canActivate: [AuthGuardService], component : ListUserComponent },
+  {path: 'detail-user/:id', canActivate: [AuthGuardService], component: DetailUserComponent},
+  {path: 'new-user', canActivate: [AuthGuardService], component: NewUserComponent},
+  {path: 'sondages', canActivate: [AuthGuardService], component : ListSondageComponent },
+  {path: 'new-sondage', canActivate: [AuthGuardService], component: NewSondageComponent},
+  {path: 'detail-sondage/:id', canActivate: [AuthGuardService], component: DetailSondageComponent},
+  {path: 'edit-sondage/:idSond', canActivate: [AuthGuardService], component: EditSondageComponent},
   // {path: 'participer/:id', component: ParticiperComponent},
   {path: 'participe/:id', component: ParticipeComponent},
-  {path: 'participants', component : ListParticipantComponent },
-  {path: 'detail-participant/:id', component: DetailParticipantComponent},
+  {path: 'participants', canActivate: [AuthGuardService], component : ListParticipantComponent },
+  {path: 'detail-participant/:id', canActivate: [AuthGuardService], component: DetailParticipantComponent},
   {path: '', component: AccueilComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: 'not-found'}
@@ -67,7 +69,8 @@ const  appRoutes: Routes = [
     AccueilComponent,
     ListParticipantComponent,
     DetailParticipantComponent,
-    DetailUserComponent
+    DetailUserComponent,
+    ThanksComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ const  appRoutes: Routes = [
     AuthService,
     SondageService,
     ParticipantService,
-    UserService
+    UserService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

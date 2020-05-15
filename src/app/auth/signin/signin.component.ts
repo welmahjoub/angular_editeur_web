@@ -43,6 +43,9 @@ export class SigninComponent implements OnInit {
             if (response) {
               console.log(email + '' + password);
               this.user = response ;
+              // Connexion de l'utilsateur
+              this.authService.signOutIn(true);
+
               this.router.navigate(['/sondages']);
           } else {
               console.log('no existe');

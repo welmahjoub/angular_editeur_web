@@ -13,8 +13,8 @@ import {ISondage} from '../interfaces/ISondage';
 })
 export class AuthService {
 
-   private user: IUser  ;
-  private isAuth = false;
+    user: IUser  ;
+   isAuth = false;
   authSubject = new Subject<boolean>();
   userSubject = new  Subject<IUser>();
 
@@ -32,7 +32,7 @@ export class AuthService {
     this.authSubject.next(this.isAuth);
   }
 
-  signOut(auth: boolean) {
+  signOutIn(auth: boolean) {
      this.isAuth = auth;
      this.emitAuth();
   }
