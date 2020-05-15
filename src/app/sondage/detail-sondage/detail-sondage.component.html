@@ -6,10 +6,14 @@
         <h3 class="panel-title"> Titre : <span *ngIf="sondage">{{sondage.reunion.intitule}}</span> </h3>
       </div>
       <div class="panel-body" *ngIf="sondage">
-        <p>id Reunion : {{sondage.reunion.id}}</p>
-        <p>Code Reunion : {{sondage.reunion.code}}</p>
-        <p>Resumé de la Reunion : {{sondage.reunion.resume}}</p>
-        <p>users : {{sondage.user}}</p>
+<!--        <p>id Reunion : {{sondage.reunion.id}}</p>-->
+<!--        <p> <b>users :</b> {{sondage.user}}</p>-->
+        <p> <b>Code Reunion : </b> {{sondage.reunion.code}}</p>
+        <p> <b>Lien de participation </b>: <a routerLink="/participe/{{sondage.id}}">{{sondage.lien}}</a></p>
+        <p> <b>Lien du pad </b> <input type="text" class="form-control" readonly [ngModel]="sondage.reunion.lienPad" ></p>
+        <p> <b>Resumé de la Reunion : </b>
+          <textarea class="form-control" readonly id="resume" rows="3" [ngModel]="sondage.reunion.resume"></textarea>
+        </p>
       </div>
     </div>
   </div>

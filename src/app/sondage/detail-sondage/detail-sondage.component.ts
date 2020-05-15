@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Subject} from 'rxjs';
 import {Participant} from '../../models/Participant';
+import {HttpClient} from "@angular/common/http";
 registerLocaleData(localeFr, 'fr');
 
 @Component({
@@ -25,7 +26,8 @@ export class DetailSondageComponent implements OnInit {
                private authService: AuthService,
                private route: ActivatedRoute,
                private sondageService: SondageService,
-               private router: Router ) {
+               private router: Router,
+               private  http: HttpClient) {
 
   }
 
@@ -71,6 +73,10 @@ export class DetailSondageComponent implements OnInit {
         this.onBack();
       }
     );
+  }
+
+  openPad(idSondage: string) {
+    return this.http.get<ISondage>('/pad/p/' + idSondage );
   }
 
   onBack() {
