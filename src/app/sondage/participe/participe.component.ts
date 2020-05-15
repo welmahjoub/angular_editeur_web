@@ -47,9 +47,9 @@ export class ParticipeComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      preferences: ['', Validators.required],
-      allergies: ['', Validators.required],
-      dates: ['']
+      preferences: [''],
+      allergies: [''],
+      dates: ['', Validators.required]
       // dates: ['']
       // dates : this.formBuilder.array([])
     });

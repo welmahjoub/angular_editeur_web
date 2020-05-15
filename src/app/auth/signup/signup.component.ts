@@ -42,6 +42,7 @@ export class SignupComponent implements OnInit {
     this.authService.signIn(email, password).then(
       response => {
         console.log(response);
+        // Si l'utilisateur existe déjà
         if (response) {
           this.errorMessage = 'This user is already existing !';
           console.log(this.errorMessage);
@@ -50,10 +51,20 @@ export class SignupComponent implements OnInit {
           this.authService.addUser(user).subscribe(
             (useradd) => {
               console.log(useradd);
+              // this.authService.signOutIn(true);
+              // Tout est bon
+              this.authService.signIn(email, password).then(
+                () => {
+                  this.router.navigate(['/sondages']);
+                },
+                (error) => {
+                  console.log('Autentification a échoué:' + error);
+                }
+              );
             }
           );
-          this.authService.signIn(email, password);
-          this.router.navigate(['/sondages']);
+          // this.authService.signIn(email, password);
+          // this.router.navigate(['/sondages']);
         }
       }
     );
