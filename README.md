@@ -1,73 +1,62 @@
-# Projet Sir partie Front end  : Doodle 
+# front doodle 
 
-## Description du projet 
-Ce projet a été fait dans le cadre de notre module SIR "Systeme d'information reparties".
+# Requirement 
 
-Il nous a été demandé de concevoir une application de sondage comme doodle, permettant ainsi  de créer un sondage pour la date d'une reunion et de pouvoir inviter des participants. Les participants pourront ainsi voter pour les différentes dates proposées pour la reunion tout en indiquant leurs préferences alimentaires et allergies.
+JDK / JRE / IDE
 
-La date finale est validée par l'administrateur sur le principe de la date ayant reçue le plus de vote. Les participants au sondage sont notifiés par mail sur la date finale et sur le lien du pad qui sera utilsé pour saisir pour que chaque membre puisse saisir son résumé.
+# Diagrammes 
 
+voir fichier [design](Design.md "design").
 
-## Technologies and requirements
+# Java doc
 
-Angular CLI: 8.3.25
-Node: 10.13.0
-OS: win32 x64
-Angular: 8.2.14
-
-### Requirement
-Bootstrap 3.3.7
-
-### Packages
-@angular-devkit/architect         0.803.25
-@angular-devkit/build-angular     0.803.25
-@angular-devkit/build-optimizer   0.803.25
-@angular-devkit/build-webpack     0.803.25
-@angular-devkit/core              8.3.25
-@angular-devkit/schematics        8.3.25
-@angular/cli                      8.3.25
-@ngtools/webpack                  8.3.25
-@schematics/angular               8.3.25
-@schematics/update                0.803.25
-rxjs                              6.4.0
-typescript                        3.5.3
-webpack                           4.39.2
-
-## Avant d'installer le projet installer angular cli
-
-* Télécharger Node et installer au minimun la bonne version de NodeJS sur : https://nodejs.org/en/download/current/
-
-* Installez ng-cli
-
-npm install -g @angular/cli
-
-## Isntallation du projet
-
-Ce projet est la partie front de notre application de sondage, il faut d'abord téléchager la partie back-end sur https://github.com/ysimp/SirProject puis le faire tourner ensuite passer à l'installation de la partie front-end.
-
-* Faire tourner la partie Backend du projet.
-* Cloner ou télécharger le projet, l'ouvrir avec VScode ou WebStorm
-* Télécharger toutes les dependances avec tapant la commande npm install dans le terminal
-* Puis lancer le server avec la commande ng serve.
+voir [doc](doc "documentation"). 
 
 
-## Les notions d'angular utilsées
+# Api 
 
-* Component
-* Le routing
-* Observer
-* Promise
-* Subject
-* Guards pour controller l'accès aux routes
-* Les services
-* un proxy pour resoudre le problème de cors (origin)
+voir https://documenter.getpostman.com/view/4248959/SzmZd1V2
 
-## Demonstration
+![api](images/api.PNG "api")
 
-## Auteurs
-* Simpara Yaya (ysimp sur github)
-* El mahjoub mohamed Abdrahman  (welmahjoub sur github)
+# logiciels :
+
+ce projet à ete developper à l'aide de :
+
+* java : langage de programmation 
+* Jersey : pour l'api Rest
+* jpa / hibernate : pour la persistence des donnees
+* Maven : pour la gestion des dependance 
+* Hsql : comme base de donnees
+* tomcat 7 :  comme server d'application
+* Eclipse  : comme IDE 
+* postman : pour tester notre api
+* git / github : pour heberger notre code
 
 
+# installations 
+
+## lancer server tomcat :
+
+projet > run As  >  maven Build .. > Goals
+
+: run -Dmaven.tomcat.port=8081
+
+## lancer server base de donnees :
+
+* double click sur run-hsqldb-server.bat
+
+* double click sur show-hsqldb.bat
+
+puis mettez cette configuration :
 
 
+type : HSQL Database Engine Server
+
+URL  : jdbc:hsqldb:hsql://localhost:9004/
+
+# Authors 
+
+Abdrahmane EL MAHJOUB
+
+Yaya SIMPARA
