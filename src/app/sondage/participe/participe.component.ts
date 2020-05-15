@@ -87,7 +87,7 @@ export class ParticipeComponent implements OnInit {
     console.log(this.participeForm.value);
   }
   onBack() {
-    this.router.navigate(['/sondages']);
+    this.router.navigate(['/thanks']);
   }
 
 }

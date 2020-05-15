@@ -46,6 +46,7 @@ const  appRoutes: Routes = [
   {path: 'participants', canActivate: [AuthGuardService], component : ListParticipantComponent },
   {path: 'detail-participant/:id', canActivate: [AuthGuardService], component: DetailParticipantComponent},
   {path: '', component: AccueilComponent},
+  {path: 'thanks', component: ThanksComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: 'not-found'}
   ];

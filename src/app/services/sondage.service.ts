@@ -6,7 +6,7 @@ import {AuthService} from './auth.service';
 import {IUser} from '../interfaces/IUser';
 import {Sondage} from '../models/Sondage';
 import {Participant} from '../models/Participant';
-import {Text} from "@angular/compiler";
+import {Text} from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -46,15 +46,15 @@ export class SondageService {
 
   getListeSondage(): Observable<ISondage> {
 
-    // return this.httpService.get<ISondage>('/rest/sondage/' + this.user.id );
-    return this.httpService.get<ISondage>('/rest/sondage/2' );
+    return this.httpService.get<ISondage>('/rest/sondage/' + this.user.id );
+    // return this.httpService.get<ISondage>('/rest/sondage/2' );
   }
 
   // Ajout d'un sondage
   // addSondage(sondage): Observable<any> {
   addSondage(sondage): Promise<any> {
-    // sondage.idUser = this.user.id;
-    sondage.idUser = 2;
+    // sondage.idUser = 2;
+    sondage.idUser = this.user.id;
     return this.httpService.post<Sondage>('/rest/sondage/add' , sondage ).toPromise();
   }
 
